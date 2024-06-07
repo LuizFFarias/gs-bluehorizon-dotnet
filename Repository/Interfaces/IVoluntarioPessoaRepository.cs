@@ -8,6 +8,8 @@ public interface IVoluntarioPessoaRepository
 
     Task<VoluntarioPessoa> FindById(long id);
 
+    Task<VoluntarioPessoa> FindLogin(string cpf, string senha);
+
     bool Add(VoluntarioPessoa voluntarioPessoa);
     
     bool Update(VoluntarioPessoa voluntarioPessoa);

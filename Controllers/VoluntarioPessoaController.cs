@@ -36,4 +36,25 @@ public class VoluntarioPessoaController : Controller
         }
         return View(pessoa);
     }
+
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Login(VoluntarioPessoa voluntarioPessoa)
+    {
+        var voluntario = await _repository.FindLogin(voluntarioPessoa.CpfPessoa, voluntarioPessoa.SenhaPessoa);
+
+        if (voluntario != null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        else
+        {
+            ViewBag.ErrorMessage = "Credenciais inválidas. Por favor, tente novamente.";
+            return View("Login");
+        }
+    }
 }

@@ -1,0 +1,32 @@
+@model VoluntarioPessoa
+@{
+ViewData["Title"] = "Login";
+}
+<link rel="stylesheet" href="css/bluehorizon.css"/>
+<div class="pt-5 align-items-center">
+    <div style="background-color: #363636;" class="text-center">
+        <h2 class="pt-2 pb-2 text-white" >Login</h2>
+    </div>
+</div>
+<div class="pt-2 d-flex flex-column align-items-center">
+    <img src="../Imagens/Cadeado.png" class="pt-3" style="width: 120px; height: 120px"/>
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+<div class="alert alert-danger" role="alert">
+    @ViewBag.ErrorMessage
+</div>
+}
+
+
+<form asp-action="Login" method="post" class="pt-4 d-flex flex-column align-items-center">
+    <div class="mb-3">
+        <input type="number" placeholder="CPF" asp-for="CpfPessoa" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem" id="cpf" aria-describedby="cpfHelp">
+        <div id="cpfHelp" class="form-text">Apenas números.</div>
+    </div>
+    <div class="mb-3">
+        <input type="password" placeholder="Senha" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="SenhaPessoa" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary rounded-pill" style="background-color: #1189e0; width: 23rem; height: 2.5rem; font-size: 20px;" >Submit</button>
+</form>

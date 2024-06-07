@@ -25,6 +25,11 @@ public class VoluntarioPessoaRepository : IVoluntarioPessoaRepository
         return await _context.VoluntarioPessoas.FirstOrDefaultAsync(i => i.Id == id);
     }
 
+    public async Task<VoluntarioPessoa> FindLogin(string cpf, string senha)
+    {
+        return await _context.VoluntarioPessoas.FirstOrDefaultAsync(c => c.CpfPessoa == cpf && c.SenhaPessoa == senha);
+    }
+
     public bool Add(VoluntarioPessoa voluntarioPessoa)
     {
         _context.Add(voluntarioPessoa);
