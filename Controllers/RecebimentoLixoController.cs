@@ -63,7 +63,7 @@ public class RecebimentoLixoController : Controller
         if (ModelState.IsValid)
         {
             _repository.Add(recebimentoLixo);
-            return RedirectToAction("Index", "RecebimentoLixo");
+            return RedirectToAction("Index", "Home");
 
         }
         return View(recebimentoLixo);

@@ -24,6 +24,7 @@ ViewData["Title"] = "Situação da Praia";
         <th scope="col">Nível de Sujeira</th>
         <th scope="col">Cidade</th>
         <th scope="col">Editar</th>
+        <th scope="col">Deletar</th>
     </tr>
     </thead>
     <tbody>
@@ -33,7 +34,7 @@ ViewData["Title"] = "Situação da Praia";
         <td>@Html.DisplayFor(modelItem => item.NivelSujeiraPraia)</td>
         <td>@Html.DisplayFor(modelItem => item.CidadePraia)</td>
         <td><a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning m-1 text-decoration-none text-white text-center pt-1">Editar</a></td>
-        
+        <td><a asp-action="Deletar" asp-route-id="@item.Id" class="btn btn-danger m-1 text-decoration-none text-white text-center pt-1">Deletar</a></td>
     </tr>
     </tbody>
 </table>

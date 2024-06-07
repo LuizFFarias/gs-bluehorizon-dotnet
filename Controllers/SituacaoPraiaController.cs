@@ -78,4 +78,27 @@ public class SituacaoPraiaController : Controller
     {
         return _repository.FindById(id) != null;
     }
+    
+    public async Task<IActionResult> Deletar(long id)
+    {
+        var situacaoPraia = await _repository.FindById(id);
+        if (situacaoPraia == null)
+        {
+            return NotFound();
+        }
+        return View(situacaoPraia);
+    }
+
+    [HttpPost, ActionName("Deletar")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeletarConfirmed(long id)
+    {
+        var situacaoPraia = await _repository.FindById(id);
+        if (situacaoPraia != null)
+        {
+            _repository.Delete(situacaoPraia);
+            return RedirectToAction("Index", "Home");
+        }
+        return NotFound();
+    }
 }
