@@ -23,6 +23,7 @@ ViewData["Title"] = "Pontos de Coleta";
             <th scope="col">Nome</th>
             <th scope="col">Estado</th>
             <th scope="col">Gerente</th>
+            <th scope="col">Editar</th>
         </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@ ViewData["Title"] = "Pontos de Coleta";
             <td>@Html.DisplayFor(modelItem => item.NomePonto)</td>
             <td>@Html.DisplayFor(modelItem => item.EstadoPonto)</td>
             <td>@Html.DisplayFor(modelItem => item.GerentePonto)</td>
+            <td><a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning m-1 text-decoration-none text-white text-center pt-1">Editar</a></td>
         </tr>
         </tbody>
     </table>
