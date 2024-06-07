@@ -2,6 +2,14 @@
 @{
 ViewData["Title"] = "Recebimento Lixo";
 }
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+<div class="alert alert-danger" role="alert">
+    @ViewBag.ErrorMessage
+</div>
+}
+
 <link rel="stylesheet" href="css/bluehorizon.css"/>
 <div class="pt-5 align-items-center">
     <div style="background-color: #363636;" class="text-center">

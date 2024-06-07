@@ -1,6 +1,7 @@
 using gs_bluehorizon_dotnet.Models;
 using gs_bluehorizon_dotnet.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace gs_bluehorizon_dotnet.Controllers;
 
@@ -14,9 +15,14 @@ public class VoluntarioPessoaController : Controller
         _repository = repository;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index(long id)
     {
-        return View();
+        var pessoa = await _repository.FindById(id);
+        if (pessoa == null)
+        {
+            return NotFound();
+        }
+        return View(pessoa);
     }
 
     public IActionResult Cadastrar()
@@ -49,7 +55,7 @@ public class VoluntarioPessoaController : Controller
 
         if (voluntario != null)
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "VoluntarioPessoa", new {id = voluntario.Id});
         }
         else
         {
@@ -57,4 +63,47 @@ public class VoluntarioPessoaController : Controller
             return View("Login");
         }
     }
+    
+    public async Task<IActionResult> Editar(long id)
+    {
+        var pessoa = await _repository.FindById(id);
+        if (pessoa == null)
+        {
+            return NotFound();
+        }
+        return View(pessoa);
+    }
+    
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Editar(VoluntarioPessoa pessoa)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _repository.Update(pessoa);
+                return RedirectToAction("Index", "Home");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!VoluntarioPessoaExists(pessoa.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+        return View(pessoa);
+    }
+
+    private bool VoluntarioPessoaExists(long id)
+    {
+        return _repository.FindById(id) != null;
+    }
+
 }
