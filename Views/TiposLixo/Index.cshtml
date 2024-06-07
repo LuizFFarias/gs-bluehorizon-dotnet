@@ -1,0 +1,43 @@
+@model IEnumerable<TiposLixo>
+@{
+    ViewData["Title"] = "Tipos de Lixo";
+}
+
+<link rel="stylesheet" href="css/bluehorizon.css"/>
+<div class="pt-5">
+    <div style="background-color: #363636;" class="text-center">
+        <h2 class="pt-2 pb-2 text-white" >Tipos de Lixo</h2>
+    </div>
+</div>
+
+<h3 class="display-5 text-center">Abaixo, confira os tipos de lixo credenciados pela BlueHorizon e autorizados a serem recebidas por cada recebimento.</h3>
+
+<img src="Imagens/Nuvem.jpg" style="width: 100%"/>
+
+@foreach (var item in Model)
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome do Lixo</th>
+            <th scope="col">Valor por Kg</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">@Html.DisplayFor(modelItem => item.Id)</th>
+            <td>@Html.DisplayFor(modelItem => item.NomeLixo)</td>
+            <td>@Html.DisplayFor(modelItem => item.ValorKgLixo) /Kg</td>
+        </tr>
+        </tbody>
+    </table>
+}
+
+<div class="d-flex flex-column mx-auto align-items-center pt-5">
+    <a asp-action="Cadastrar" asp-controller="TiposLixo" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Cadastrar novo tipo de lixo</a>
+</div>
+    
+<div class="d-flex flex-column mx-auto align-items-center pt-5">
+    <a asp-action="Cadastrar" asp-controller="VoluntarioPessoa" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Junte-se a nós</a>
+</div>
