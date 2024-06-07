@@ -1,0 +1,58 @@
+@model VoluntarioPessoa
+@{
+ViewData["Title"] = "Cadastro";
+}
+<link rel="stylesheet" href="css/bluehorizon.css"/>
+<div class="pt-5 align-items-center">
+    <div style="background-color: #363636;" class="text-center">
+        <h2 class="pt-2 pb-2 text-white" >Cadastro</h2>
+    </div>
+</div>
+<div class="pt-2 d-flex flex-column align-items-center">
+    <img src="../Imagens/Cadeado.png" class="pt-3" style="width: 120px; height: 120px"/>
+</div>
+
+
+
+<form asp-action="Cadastrar" method="post" class="pt-4 d-flex flex-column align-items-center">
+    <div class="mb-3">
+        <input type="number" placeholder="CPF" asp-for="CpfPessoa" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem" id="cpf" aria-describedby="cpfHelp">
+        <div id="cpfHelp" class="form-text">Apenas números.</div>
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="Nome Completo" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="Nome" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <input type="date" placeholder="Data Nascimento" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="DtnascPessoa" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="password" placeholder="Senha" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="SenhaPessoa" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="number" placeholder="CEP" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="CepEndereco" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="Rua" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="RuaEndereco" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="Número" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="NumEndereco" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="Bairro" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="BairroEndereco" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="Cidade" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="CidadeEndereco" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="Estado" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="EstadoEndereco" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="País" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="PaisEndereco" class="form-control">
+    </div>
+   
+    <button type="submit" class="btn btn-primary rounded-pill" style="background-color: #1189e0; width: 23rem; height: 2.5rem; font-size: 20px;" >Submit</button>
+</form>
+
+
+
+

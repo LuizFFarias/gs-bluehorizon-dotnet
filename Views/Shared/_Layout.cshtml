@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/gs_bluehorizon_dotnet.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header style="background-color: #a5c8ff;" class="fw-bolder d-flex justify-content-center align-items-center">
+    <div class="pt-2 d-flex pb-2">
+        <img src="../Imagens/Icone.jpg" style="height: 70px; width: 70px" class="me-3"/>
+        <a style="font-size: 30px" class="m-0 pt-3 text-decoration-none text-black" asp-action="Index" asp-controller="Home">BLUEHORIZON</a>
+    </div>
+    
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

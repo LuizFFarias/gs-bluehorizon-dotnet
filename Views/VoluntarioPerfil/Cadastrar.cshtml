@@ -1,0 +1,22 @@
+@model VoluntarioPerfil
+
+@{
+ViewData["Title"] = "Cadastrar Perfil";
+}
+
+<h1>Cadastrar Perfil</h1>
+
+<form asp-action="Cadastrar" method="post">
+    <div class="form-group">
+        <label asp-for="QntdLixo" class="control-label">Quantidade de Lixo Retirado:</label>
+        <input asp-for="QntdLixo" class="form-control" />
+        <span asp-validation-for="QntdLixo" class="text-danger"></span>
+    </div>
+    <a>@Model.PessoaId</a>
+    
+    <input type="hidden" asp-for="PessoaId"/>
+    
+    <div class="form-group">
+        <input type="submit" value="Cadastrar" class="btn btn-primary"/>
+    </div>
+</form>

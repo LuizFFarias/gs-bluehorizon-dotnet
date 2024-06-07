@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "BlueHorizon";
+}
+
+<link rel="stylesheet" href="css/bluehorizon.css"/>
+<div class="text-center">
+    <h1 class="display-5 pt-4">Bem Vindo Ao</h1>
+    <h1 class="display-3 fw-bolder">BLUEHORIZON</h1>
+    
+    <div style="background-color: #363636; width: 100%">
+        <h2 class="pt-2 pb-2 text-white" >O que você quer fazer hoje?</h2>
+    </div>
+    
+    <div class="d-flex flex-column mx-auto align-items-center pt-4">
+        <a asp-action="Cadastrar" asp-controller="VoluntarioPessoa" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Cadastro</a>
+        <a asp-action="" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Login</a>
+        <a asp-action="Index" asp-controller="Sobre" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Sobre a BlueHorizon</a>
+        <a asp-action="Index" asp-controller="ComoSerVoluntario" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Como fazer parte?</a>
+        <a asp-action="" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Praias com mais lixo</a>
+        <a asp-action="" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Pontos de coleta</a>
+    </div>
+</div>
+    
+   

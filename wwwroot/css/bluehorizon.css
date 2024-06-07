@@ -1,0 +1,11 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.link {
+    background-color: #1189e0;
+    width: 23rem;
+    height: 2.5rem;
+    font-size: 20px;
+}
