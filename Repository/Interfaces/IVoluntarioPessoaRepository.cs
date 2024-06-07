@@ -10,6 +10,8 @@ public interface IVoluntarioPessoaRepository
 
     Task<VoluntarioPessoa> FindLogin(string cpf, string senha);
 
+    Task<VoluntarioPessoa> FindByCpf(string cpf);
+
     bool Add(VoluntarioPessoa voluntarioPessoa);
     
     bool Update(VoluntarioPessoa voluntarioPessoa);

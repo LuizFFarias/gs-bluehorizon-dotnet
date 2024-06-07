@@ -30,6 +30,11 @@ public class VoluntarioPessoaRepository : IVoluntarioPessoaRepository
         return await _context.VoluntarioPessoas.FirstOrDefaultAsync(c => c.CpfPessoa == cpf && c.SenhaPessoa == senha);
     }
 
+    public async Task<VoluntarioPessoa> FindByCpf(string cpf)
+    {
+        return await _context.VoluntarioPessoas.FirstOrDefaultAsync(c => c.CpfPessoa == cpf);
+    }
+
     public bool Add(VoluntarioPessoa voluntarioPessoa)
     {
         _context.Add(voluntarioPessoa);

@@ -31,4 +31,12 @@ public class RecebimentoLixo
 
     public ICollection<TiposLixo> TiposLixos { get; } = new List<TiposLixo>();
     
+    [NotMapped]
+    public string PessoaCpf { get; set; }
+    
+    [NotMapped]
+    public string NomePonto { get; set; }
+    
+    
+    
 }

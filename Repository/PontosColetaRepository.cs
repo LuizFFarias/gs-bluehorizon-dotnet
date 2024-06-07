@@ -24,6 +24,11 @@ public class PontosColetaRepository : IPontosColetaRepository
         return await _context.PontosColetas.FirstOrDefaultAsync(i => i.Id == id);
     }
 
+    public async Task<PontosColeta> FindByName(string nome)
+    {
+        return await _context.PontosColetas.FirstOrDefaultAsync(n => n.NomePonto == nome);
+    }
+
     public bool Add(PontosColeta pontosColeta)
     {
         _context.Add(pontosColeta);

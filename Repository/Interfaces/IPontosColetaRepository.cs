@@ -8,6 +8,8 @@ public interface IPontosColetaRepository
 
     Task<PontosColeta> FindById(long id);
 
+    Task<PontosColeta> FindByName(string nome);
+
     bool Add(PontosColeta pontosColeta);
     
     bool Update(PontosColeta pontosColeta);

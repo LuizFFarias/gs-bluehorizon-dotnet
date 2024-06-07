@@ -6,6 +6,8 @@ public interface IVoluntarioPerfilRepository
 {
     Task<IEnumerable<VoluntarioPerfil>> FindAll();
 
+    Task<VoluntarioPerfil> FindByPessoaId(long id);
+    
     Task<VoluntarioPerfil> FindById(long id);
 
     bool Add(VoluntarioPerfil voluntarioPerfil);

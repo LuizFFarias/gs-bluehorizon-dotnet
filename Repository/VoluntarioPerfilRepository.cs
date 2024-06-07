@@ -20,6 +20,11 @@ public class VoluntarioPerfilRepository : IVoluntarioPerfilRepository
         return await _context.VoluntarioPerfils.ToListAsync();
     }
 
+    public async Task<VoluntarioPerfil> FindByPessoaId(long id)
+    {
+        return await _context.VoluntarioPerfils.FirstOrDefaultAsync(p => p.PessoaId == id);
+    }
+
     public async Task<VoluntarioPerfil> FindById(long id)
     {
         return await _context.VoluntarioPerfils.FirstOrDefaultAsync(i => i.Id == id);
