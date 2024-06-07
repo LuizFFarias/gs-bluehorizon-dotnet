@@ -1,11 +1,11 @@
 @model TiposLixo
 @{
-    ViewData["Title"] = "Cadastrar Lixo";
+ViewData["Title"] = "Editar Lixo";
 }
 <link rel="stylesheet" href="css/bluehorizon.css"/>
 <div class="pt-5 align-items-center">
     <div style="background-color: #363636;" class="text-center">
-        <h2 class="pt-2 pb-2 text-white" >Cadastrar Tipo de Lixo</h2>
+        <h2 class="pt-2 pb-2 text-white" >Editar Tipo de Lixo</h2>
     </div>
 </div>
 <div class="pt-2 d-flex flex-column align-items-center">
@@ -13,12 +13,13 @@
 </div>
 
 
-<form asp-action="Cadastrar" method="post" class="pt-4 d-flex flex-column align-items-center">
+<form asp-action="Editar" method="post" class="pt-4 d-flex flex-column align-items-center">
     <div class="mb-3">
         <input type="text" placeholder="Nome do ponto" asp-for="NomeLixo" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem">
     </div>
     <div class="mb-3">
         <input type="text" placeholder="Valor por Kg" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="ValorKgLixo" class="form-control">
     </div>
-    <button type="submit" value="Cadastrar" class="btn btn-primary rounded-pill" style="background-color: #1189e0; width: 23rem; height: 2.5rem; font-size: 20px;" >Cadastrar</button>
+    <input type="hidden" asp-for="Id"/>
+    <button type="submit" value="Cadastrar" class="btn btn-primary rounded-pill" style="background-color: #1189e0; width: 23rem; height: 2.5rem; font-size: 20px;" >Editar</button>
 </form>

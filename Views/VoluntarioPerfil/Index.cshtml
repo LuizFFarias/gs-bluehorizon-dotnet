@@ -1,16 +1,35 @@
+@model VoluntarioPerfil
 @{
-    Layout = null;
+ViewData["Title"] = "Perfil";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<div class="pt-5">
+    <div style="background-color: #363636;" class="text-center">
+        <h2 class="pt-2 pb-2 text-white" >Sua Conta</h2>
+    </div>
 </div>
-</body>
-</html>
+
+<h3 class="display-5 text-center">Abaixo, confira os dados da sua conta.</h3>
+
+<img src="Imagens/Nuvem.jpg" style="width: 100%"/>
+
+<div class="d-flex justify-content-center align-items-center" style="height: 30vh;">
+    <table class="table" style="width: 50%;">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Quantidade de Lixo Retirado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">@Html.DisplayFor(modelItem => modelItem.Id)</th>
+            <td>@Html.DisplayFor(modelItem => modelItem.QntdLixo) Kg</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex flex-column mx-auto align-items-center pt-5">
+    <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-info m-1 rounded-pill text-center">Editar</a>
+</div>
+

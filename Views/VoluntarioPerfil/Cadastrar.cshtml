@@ -8,12 +8,11 @@ ViewData["Title"] = "Cadastrar Perfil";
 
 <form asp-action="Cadastrar" method="post">
     <div class="form-group">
-        <label asp-for="QntdLixo" class="control-label">Quantidade de Lixo Retirado:</label>
-        <input asp-for="QntdLixo" class="form-control" />
+        <div class="mb-3">
+            <input type="number" placeholder="Quantidade de Lixo Retirado" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="QntdLixo" class="form-control">
+        </div>
         <span asp-validation-for="QntdLixo" class="text-danger"></span>
     </div>
-    <a>@Model.PessoaId</a>
-    
     <input type="hidden" asp-for="PessoaId"/>
     
     <div class="form-group">
