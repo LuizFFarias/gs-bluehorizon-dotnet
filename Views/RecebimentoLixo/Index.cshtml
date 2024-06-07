@@ -1,4 +1,4 @@
-@model RecebimentoLixo
+@model IEnumerable<RecebimentoLixo>
 @{
 ViewData["Title"] = "Recebimento Lixo";
 }
@@ -10,10 +10,38 @@ ViewData["Title"] = "Recebimento Lixo";
     </div>
 </div>
 
-<h3 class="display-5 text-center">Abaixo, confira os pontos de coleta credenciados pela BlueHorizon e autorizados a realizar o recebimento.</h3>
+<h3 class="display-5 text-center">Abaixo, confira os recebimentos de lixo.</h3>
 
 <img src="Imagens/Nuvem.jpg" style="width: 100%"/>
 
+
+@foreach (var item in Model)
+{
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Data Recebimento</th>
+        <th scope="col">ID Perfil</th>
+        <th scope="col">ID Pessoa</th>
+        <th scope="col">ID Ponto de Coleta</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Deletar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">@Html.DisplayFor(modelItem => item.Id)</th>
+        <td>@Html.DisplayFor(modelItem => item.DtRecebimento)</td>
+        <td>@Html.DisplayFor(modelItem => item.PerfilId)</td>
+        <td>@Html.DisplayFor(modelItem => item.PontosColetaId)</td>
+        <td>@Html.DisplayFor(modelItem => item.PessoaId)</td>
+        <td><a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning m-1 text-decoration-none text-white text-center pt-1">Editar</a></td>
+        <td><a asp-action="Deletar" asp-route-id="@item.Id" class="btn btn-danger m-1 text-decoration-none text-white text-center pt-1">Deletar</a></td>
+    </tr>
+    </tbody>
+</table>
+}
 
 <div class="d-flex flex-column mx-auto align-items-center pt-5">
     <a asp-action="Cadastrar" asp-controller="RecebimentoLixo" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Registrar Coleta</a>

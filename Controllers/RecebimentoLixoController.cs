@@ -1,6 +1,7 @@
 using gs_bluehorizon_dotnet.Models;
 using gs_bluehorizon_dotnet.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace gs_bluehorizon_dotnet.Controllers;
 
@@ -22,9 +23,10 @@ public class RecebimentoLixoController : Controller
         _pessoaRepository = pessoaRepository;
     }
     
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var recebimentos = await _repository.FindAll();
+        return View(recebimentos);
     }
 
     public IActionResult Cadastrar()
@@ -67,5 +69,72 @@ public class RecebimentoLixoController : Controller
 
         }
         return View(recebimentoLixo);
+    }
+    
+    public async Task<IActionResult> Editar(long id)
+    {
+        var recebimentoLixo = await _repository.FindById(id);
+        if (recebimentoLixo == null)
+        {
+            return NotFound();
+        }
+        return View(recebimentoLixo);
+    }
+    
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Editar(RecebimentoLixo recebimentoLixo)
+    {
+        var pessoa = await _pessoaRepository.FindByCpf(recebimentoLixo.PessoaCpf);
+        if (pessoa == null)
+        {
+            ModelState.AddModelError("", "Pessoa não encontrada.");
+            return View(recebimentoLixo);
+        }
+
+        var perfil = await _perfilRepository.FindByPessoaId(pessoa.Id);
+        if (perfil == null)
+        {
+            ModelState.AddModelError("", "Perfil não encontrado.");
+            return View(recebimentoLixo);
+        }
+
+        var coleta = await _coletaRepository.FindByName(recebimentoLixo.NomePonto);
+        if (coleta == null)
+        {
+            ModelState.AddModelError("", "Ponto de coleta não encontrado.");
+            return View(recebimentoLixo);
+        }
+
+        recebimentoLixo.PessoaId = pessoa.Id;
+        recebimentoLixo.PerfilId = perfil.Id;
+        recebimentoLixo.PontosColetaId = coleta.Id;
+        
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _repository.Update(recebimentoLixo);
+                return RedirectToAction("Index", "Home");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RecebimentoExists(recebimentoLixo.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+        return View(recebimentoLixo);
+    }
+    
+    private bool RecebimentoExists(long id)
+    {
+        return _repository.FindById(id) != null;
     }
 }
