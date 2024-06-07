@@ -137,4 +137,27 @@ public class RecebimentoLixoController : Controller
     {
         return _repository.FindById(id) != null;
     }
+    
+    public async Task<IActionResult> Deletar(long id)
+    {
+        var recebimentoLixo = await _repository.FindById(id);
+        if (recebimentoLixo == null)
+        {
+            return NotFound();
+        }
+        return View(recebimentoLixo);
+    }
+
+    [HttpPost, ActionName("Deletar")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeletarConfirmed(long id)
+    {
+        var recebimentoLixo = await _repository.FindById(id);
+        if (recebimentoLixo != null)
+        {
+            _repository.Delete(recebimentoLixo);
+            return RedirectToAction("Index", "Home");
+        }
+        return NotFound();
+    }
 }
