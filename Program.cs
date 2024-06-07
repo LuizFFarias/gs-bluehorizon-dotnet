@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IVoluntarioPessoaRepository, VoluntarioPessoaRepository>();
 builder.Services.AddScoped<IVoluntarioPerfilRepository, VoluntarioPerfilRepository>();
 builder.Services.AddScoped<IRecebimentoLixoRepository, RecebimentoLixoRepository>();
+builder.Services.AddScoped<IPontosColetaRepository, PontosColetaRepository>();
+builder.Services.AddScoped<ITiposLixoRepository, TiposLixoRepository>();
+builder.Services.AddScoped<ISituacaoPraiaRepository, SituacaoPraiaRepository>();
 
 // Add DbContext Oracle on the project
 builder.Services.AddDbContext<BlueHorizonDbContext>(options =>

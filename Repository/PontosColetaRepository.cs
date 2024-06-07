@@ -1,10 +1,11 @@
 using gs_bluehorizon_dotnet.Data;
 using gs_bluehorizon_dotnet.Models;
+using gs_bluehorizon_dotnet.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace gs_bluehorizon_dotnet.Repository;
 
-public class PontosColetaRepository
+public class PontosColetaRepository : IPontosColetaRepository
 {
     private readonly BlueHorizonDbContext _context;
 

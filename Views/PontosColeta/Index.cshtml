@@ -1,0 +1,47 @@
+@model IEnumerable<PontosColeta>
+@{
+ViewData["Title"] = "Pontos de Coleta";
+}
+
+<link rel="stylesheet" href="css/bluehorizon.css"/>
+<div class="pt-5">
+    <div style="background-color: #363636;" class="text-center">
+        <h2 class="pt-2 pb-2 text-white" >Pontos de Coleta</h2>
+    </div>
+</div>
+
+<h3 class="display-5 text-center">Abaixo, confira os pontos de coleta credenciados pela BlueHorizon e autorizados a realizar o recebimento.</h3>
+
+<img src="Imagens/Nuvem.jpg" style="width: 100%"/>
+
+@foreach (var item in Model)
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Gerente</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">@Html.DisplayFor(modelItem => item.Id)</th>
+            <td>@Html.DisplayFor(modelItem => item.NomePonto)</td>
+            <td>@Html.DisplayFor(modelItem => item.EstadoPonto)</td>
+            <td>@Html.DisplayFor(modelItem => item.GerentePonto)</td>
+        </tr>
+        </tbody>
+    </table>
+}
+
+<div class="d-flex flex-column mx-auto align-items-center pt-5">
+        <a asp-action="Cadastrar" asp-controller="PontosColeta" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Cadastrar novo ponto</a>
+    </div>
+    
+    <div class="d-flex flex-column mx-auto align-items-center pt-5">
+        <a asp-action="Cadastrar" asp-controller="VoluntarioPessoa" class="link m-1 rounded-pill text-decoration-none text-white text-center pt-1">Junte-se a nós</a>
+    </div>
+    
+
