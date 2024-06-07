@@ -80,4 +80,27 @@ public class PontosColetaController : Controller
     {
         return _repository.FindById(id) != null;
     }
+    
+    public async Task<IActionResult> Deletar(long id)
+    {
+        var pontosColeta = await _repository.FindById(id);
+        if (pontosColeta == null)
+        {
+            return NotFound();
+        }
+        return View(pontosColeta);
+    }
+
+    [HttpPost, ActionName("Deletar")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeletarConfirmed(long id)
+    {
+        var pontosColeta = await _repository.FindById(id);
+        if (pontosColeta != null)
+        {
+            _repository.Delete(pontosColeta);
+            return RedirectToAction("Index", "Home");
+        }
+        return NotFound();
+    }
 }
