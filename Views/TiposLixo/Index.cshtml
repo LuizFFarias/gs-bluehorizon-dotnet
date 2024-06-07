@@ -23,6 +23,7 @@
             <th scope="col">Nome do Lixo</th>
             <th scope="col">Valor por Kg</th>
             <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
         </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
             <td>@Html.DisplayFor(modelItem => item.NomeLixo)</td>
             <td>@Html.DisplayFor(modelItem => item.ValorKgLixo) /Kg</td>
             <td><a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning m-1 text-decoration-none text-white text-center pt-1">Editar</a></td>
+            <td><a asp-action="Deletar" asp-route-id="@item.Id" class="btn btn-danger m-1 text-decoration-none text-white text-center pt-1">Excluir</a></td>
         </tr>
         </tbody>
     </table>

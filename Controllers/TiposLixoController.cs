@@ -78,4 +78,28 @@ public class TiposLixoController : Controller
     {
         return _repository.FindById(id) != null;
     }
+    
+    public async Task<IActionResult> Deletar(long id)
+    {
+        var tiposLixo = await _repository.FindById(id);
+        if (tiposLixo == null)
+        {
+            return NotFound();
+        }
+        return View(tiposLixo);
+    }
+
+    [HttpPost, ActionName("Deletar")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeletarConfirmed(long id)
+    {
+        var tiposLixo = await _repository.FindById(id);
+        if (tiposLixo != null)
+        {
+            _repository.Delete(tiposLixo);
+            return RedirectToAction("Index", "Home");
+        }
+        return NotFound();
+    }
+
 }
