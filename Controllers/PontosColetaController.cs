@@ -32,7 +32,7 @@ public class PontosColetaController : Controller
         if (ModelState.IsValid)
         {
             _repository.Add(pontosColeta);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "PontosColeta");
         }
 
         return View(pontosColeta);

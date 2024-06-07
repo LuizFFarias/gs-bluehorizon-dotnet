@@ -1,0 +1,27 @@
+@model SituacaoPraia
+@{
+ViewData["Title"] = "Login";
+}
+<link rel="stylesheet" href="css/bluehorizon.css"/>
+<div class="pt-5 align-items-center">
+    <div style="background-color: #363636;" class="text-center">
+        <h2 class="pt-2 pb-2 text-white" >Adicionar nova praia</h2>
+    </div>
+</div>
+<div class="pt-2 d-flex flex-column align-items-center">
+    <img src="../Imagens/Cadeado.png" class="pt-3" style="width: 120px; height: 120px"/>
+</div>
+
+
+<form asp-action="Cadastrar" method="post" class="pt-4 d-flex flex-column align-items-center">
+    <div class="mb-3">
+        <input type="text" placeholder="Nome da praia" asp-for="NomePraia" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem">
+    </div>
+    <div class="mb-3">
+        <input type="number" placeholder="Nível de sujeira" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem"  asp-for="NivelSujeiraPraia" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="Cidade" asp-for="CidadePraia" class="form-control rounded-pill" style="background-color: #bccad4; text-decoration-color: #5c6468; width: 40rem">
+    </div>
+    <button type="submit" value="Cadastrar" class="btn btn-primary rounded-pill" style="background-color: #1189e0; width: 23rem; height: 2.5rem; font-size: 20px;" >Submit</button>
+</form>
