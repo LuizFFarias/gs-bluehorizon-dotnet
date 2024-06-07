@@ -14,7 +14,16 @@ public class VoluntarioPerfil
     [Column("qntdlixoretirado_perfil")]
     public int QntdLixo { get; set; }
     
+    [Required(ErrorMessage = "A pessoa é obrigatória")]
+    [Column("id_pessoa")]
     public long PessoaId { get; set; }
     
     public VoluntarioPessoa VoluntarioPessoa { get; set; } = null!;
+    
+    [Column("id_recebimento")]
+    public long? RecebimentoLixoId { get; set; }
+    
+    public RecebimentoLixo? RecebimentoLixo { get; set; }
+    
+    
 }

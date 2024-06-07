@@ -56,4 +56,9 @@ public class VoluntarioPessoa
     public string PaisEndereco { get; set; } = null!;
     
     public VoluntarioPerfil? Perfil { get; set; }
+    
+    [Column("id_recebimento")]
+    public long? RecebimentoLixoId { get; set; }
+    
+    public RecebimentoLixo? RecebimentoLixo { get; set; }
 }
