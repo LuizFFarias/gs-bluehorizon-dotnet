@@ -24,6 +24,11 @@ public class TiposLixoRepository : ITiposLixoRepository
         return await _context.TiposLixos.FirstOrDefaultAsync(i => i.Id == id);
     }
 
+    public async Task<TiposLixo> FindByName(string nome)
+    {
+        return await _context.TiposLixos.FirstOrDefaultAsync(i => i.NomeLixo == nome);
+    }
+
     public bool Add(TiposLixo tiposLixo)
     {
         _context.Add(tiposLixo);

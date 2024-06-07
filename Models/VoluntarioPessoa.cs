@@ -11,6 +11,7 @@ public class VoluntarioPessoa
     public long Id { get; set; }
     
     [Required(ErrorMessage = "O CPF é obrigatório.")]
+    [RegularExpression("^[0-9]{11}$", ErrorMessage = "CPF deve conter apenas números.")]
     [StringLength(11, MinimumLength = 11, ErrorMessage = "O CPF deve ter exatamente 11 caracteres.")]
     [Column("cpf_pessoa")]
     public string CpfPessoa { get; set; } = null!;
@@ -20,7 +21,7 @@ public class VoluntarioPessoa
     
     [Required(ErrorMessage = "A data de nascimento é obrigatória.")]
     [Column("dtnasc_pessoa")]
-    public DateTime DtnascPessoa { get; set; }
+    public DateOnly DtnascPessoa { get; set; }
 
     [Required(ErrorMessage = "A senha é obrigatória.")]
     [Column("senha_pessoa")]
@@ -28,6 +29,7 @@ public class VoluntarioPessoa
 
     [Required(ErrorMessage = "O CEP é obrigatório.")]
     [StringLength(8, MinimumLength = 8, ErrorMessage = "O CEP deve ter exatamente 8 números.")]
+    [RegularExpression("^[0-9]{8}$", ErrorMessage = "CEP deve conter apenas números.")]
     [Column("cep_end")]
     public string CepEndereco { get; set; } = null!;
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -49,7 +48,7 @@ namespace gs_bluehorizon_dotnet.Migrations
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     cpf_pessoa = table.Column<string>(type: "NVARCHAR2(11)", maxLength: 11, nullable: false),
                     nome_pessoa = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    dtnasc_pessoa = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
+                    dtnasc_pessoa = table.Column<string>(type: "NVARCHAR2(10)", nullable: false),
                     senha_pessoa = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     cep_end = table.Column<string>(type: "NVARCHAR2(8)", maxLength: 8, nullable: false),
                     rua_end = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
@@ -90,7 +89,7 @@ namespace gs_bluehorizon_dotnet.Migrations
                 {
                     id_recebimento = table.Column<long>(type: "NUMBER(19)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
-                    dt_recebimento = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
+                    dt_recebimento = table.Column<string>(type: "NVARCHAR2(10)", nullable: false),
                     id_pontosColeta = table.Column<long>(type: "NUMBER(19)", nullable: true),
                     id_perfil = table.Column<long>(type: "NUMBER(19)", nullable: true),
                     id_pessoa = table.Column<long>(type: "NUMBER(19)", nullable: true)

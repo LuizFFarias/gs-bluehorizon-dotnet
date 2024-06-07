@@ -61,8 +61,9 @@ namespace gs_bluehorizon_dotnet.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<DateTime>("DtRecebimento")
-                        .HasColumnType("TIMESTAMP(7)")
+                    b.Property<string>("DtRecebimento")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(10)")
                         .HasColumnName("dt_recebimento");
 
                     b.Property<long?>("PerfilId")
@@ -201,8 +202,9 @@ namespace gs_bluehorizon_dotnet.Migrations
                         .HasColumnType("NVARCHAR2(11)")
                         .HasColumnName("cpf_pessoa");
 
-                    b.Property<DateTime>("DtnascPessoa")
-                        .HasColumnType("TIMESTAMP(7)")
+                    b.Property<string>("DtnascPessoa")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(10)")
                         .HasColumnName("dtnasc_pessoa");
 
                     b.Property<string>("EstadoEndereco")

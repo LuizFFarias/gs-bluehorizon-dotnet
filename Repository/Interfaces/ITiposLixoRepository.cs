@@ -8,6 +8,8 @@ public interface ITiposLixoRepository
 
     Task<TiposLixo> FindById(long id);
 
+    Task<TiposLixo> FindByName(string nome);
+
     bool Add(TiposLixo tiposLixo);
     
     bool Update(TiposLixo tiposLixo);

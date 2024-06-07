@@ -33,6 +33,15 @@ public class VoluntarioPessoaController : Controller
     [HttpPost]
     public async Task<IActionResult> Cadastrar(VoluntarioPessoa pessoa)
     {
+        DateOnly dataAtual = DateOnly.FromDateTime(DateTime.Now); 
+        int idade = dataAtual.Year - pessoa.DtnascPessoa.Year;
+
+        if (idade < 18 || idade > 100)
+        {
+            ViewBag.ErrorMessage = "Data inválida. Por favor, tente novamente.";
+            return View(pessoa);
+        }
+        
         if (ModelState.IsValid)
         {
             _repository.Add(pessoa);
@@ -84,7 +93,7 @@ public class VoluntarioPessoaController : Controller
             try
             {
                 _repository.Update(pessoa);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "VoluntarioPessoa");
             }
             catch (DbUpdateConcurrencyException)
             {

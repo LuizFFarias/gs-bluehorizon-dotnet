@@ -12,7 +12,7 @@ public class RecebimentoLixo
         
     [Required(ErrorMessage = "A data de recebimento do lixo é obrigatório.")]
     [Column("dt_recebimento")]
-    public DateTime DtRecebimento { get; set; }
+    public DateOnly DtRecebimento { get; set; }
 
     [Column("id_pontosColeta")]
     public long? PontosColetaId { get; set; }
