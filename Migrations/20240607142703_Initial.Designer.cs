@@ -12,7 +12,7 @@ using gs_bluehorizon_dotnet.Data;
 namespace gs_bluehorizon_dotnet.Migrations
 {
     [DbContext(typeof(BlueHorizonDbContext))]
-    [Migration("20240607090219_Initial")]
+    [Migration("20240607142703_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -50,13 +50,7 @@ namespace gs_bluehorizon_dotnet.Migrations
                         .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("nome_ponto");
 
-                    b.Property<long?>("RecebimentoLixoId")
-                        .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_recebimento");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RecebimentoLixoId");
 
                     b.ToTable("pontos_coleta");
                 });
@@ -74,7 +68,25 @@ namespace gs_bluehorizon_dotnet.Migrations
                         .HasColumnType("TIMESTAMP(7)")
                         .HasColumnName("dt_recebimento");
 
+                    b.Property<long?>("PerfilId")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("id_perfil");
+
+                    b.Property<long?>("PessoaId")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("id_pessoa");
+
+                    b.Property<long?>("PontosColetaId")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("id_pontosColeta");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PerfilId");
+
+                    b.HasIndex("PessoaId");
+
+                    b.HasIndex("PontosColetaId");
 
                     b.ToTable("recebimento_lixo");
                 });
@@ -153,16 +165,10 @@ namespace gs_bluehorizon_dotnet.Migrations
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("qntdlixoretirado_perfil");
 
-                    b.Property<long?>("RecebimentoLixoId")
-                        .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_recebimento");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PessoaId")
                         .IsUnique();
-
-                    b.HasIndex("RecebimentoLixoId");
 
                     b.ToTable("voluntario_perfil");
                 });
@@ -222,10 +228,6 @@ namespace gs_bluehorizon_dotnet.Migrations
                         .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("pais_end");
 
-                    b.Property<long?>("RecebimentoLixoId")
-                        .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_recebimento");
-
                     b.Property<string>("RuaEndereco")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)")
@@ -238,18 +240,28 @@ namespace gs_bluehorizon_dotnet.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecebimentoLixoId");
-
                     b.ToTable("voluntario_pessoa");
                 });
 
-            modelBuilder.Entity("gs_bluehorizon_dotnet.Models.PontosColeta", b =>
+            modelBuilder.Entity("gs_bluehorizon_dotnet.Models.RecebimentoLixo", b =>
                 {
-                    b.HasOne("gs_bluehorizon_dotnet.Models.RecebimentoLixo", "RecebimentoLixo")
-                        .WithMany("PontosColetas")
-                        .HasForeignKey("RecebimentoLixoId");
+                    b.HasOne("gs_bluehorizon_dotnet.Models.VoluntarioPerfil", "VoluntarioPerfil")
+                        .WithMany("RecebimentoLixos")
+                        .HasForeignKey("PerfilId");
 
-                    b.Navigation("RecebimentoLixo");
+                    b.HasOne("gs_bluehorizon_dotnet.Models.VoluntarioPessoa", "VoluntarioPessoa")
+                        .WithMany("RecebimentoLixos")
+                        .HasForeignKey("PessoaId");
+
+                    b.HasOne("gs_bluehorizon_dotnet.Models.PontosColeta", "PontosColeta")
+                        .WithMany("RecebimentoLixos")
+                        .HasForeignKey("PontosColetaId");
+
+                    b.Navigation("PontosColeta");
+
+                    b.Navigation("VoluntarioPerfil");
+
+                    b.Navigation("VoluntarioPessoa");
                 });
 
             modelBuilder.Entity("gs_bluehorizon_dotnet.Models.TiposLixo", b =>
@@ -269,38 +281,29 @@ namespace gs_bluehorizon_dotnet.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("gs_bluehorizon_dotnet.Models.RecebimentoLixo", "RecebimentoLixo")
-                        .WithMany("Perfils")
-                        .HasForeignKey("RecebimentoLixoId");
-
-                    b.Navigation("RecebimentoLixo");
-
                     b.Navigation("VoluntarioPessoa");
                 });
 
-            modelBuilder.Entity("gs_bluehorizon_dotnet.Models.VoluntarioPessoa", b =>
+            modelBuilder.Entity("gs_bluehorizon_dotnet.Models.PontosColeta", b =>
                 {
-                    b.HasOne("gs_bluehorizon_dotnet.Models.RecebimentoLixo", "RecebimentoLixo")
-                        .WithMany("VoluntarioPessoas")
-                        .HasForeignKey("RecebimentoLixoId");
-
-                    b.Navigation("RecebimentoLixo");
+                    b.Navigation("RecebimentoLixos");
                 });
 
             modelBuilder.Entity("gs_bluehorizon_dotnet.Models.RecebimentoLixo", b =>
                 {
-                    b.Navigation("Perfils");
-
-                    b.Navigation("PontosColetas");
-
                     b.Navigation("TiposLixos");
+                });
 
-                    b.Navigation("VoluntarioPessoas");
+            modelBuilder.Entity("gs_bluehorizon_dotnet.Models.VoluntarioPerfil", b =>
+                {
+                    b.Navigation("RecebimentoLixos");
                 });
 
             modelBuilder.Entity("gs_bluehorizon_dotnet.Models.VoluntarioPessoa", b =>
                 {
                     b.Navigation("Perfil");
+
+                    b.Navigation("RecebimentoLixos");
                 });
 #pragma warning restore 612, 618
         }

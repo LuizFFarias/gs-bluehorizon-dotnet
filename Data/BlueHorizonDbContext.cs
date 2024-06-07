@@ -24,22 +24,22 @@ public class BlueHorizonDbContext : DbContext
             .HasForeignKey<VoluntarioPerfil>(e => e.PessoaId)
             .IsRequired();
 
-        modelBuilder.Entity<RecebimentoLixo>()
-            .HasMany(e => e.Perfils)
-            .WithOne(e => e.RecebimentoLixo)
-            .HasForeignKey(e => e.RecebimentoLixoId)
+        modelBuilder.Entity<VoluntarioPerfil>()
+            .HasMany(e => e.RecebimentoLixos)
+            .WithOne(e => e.VoluntarioPerfil)
+            .HasForeignKey(e => e.PerfilId)
             .IsRequired(false);
 
-        modelBuilder.Entity<RecebimentoLixo>()
-            .HasMany(e => e.VoluntarioPessoas)
-            .WithOne(e => e.RecebimentoLixo)
-            .HasForeignKey(e => e.RecebimentoLixoId)
+        modelBuilder.Entity<VoluntarioPessoa>()
+            .HasMany(e => e.RecebimentoLixos)
+            .WithOne(e => e.VoluntarioPessoa)
+            .HasForeignKey(e => e.PessoaId)
             .IsRequired(false);
 
-        modelBuilder.Entity<RecebimentoLixo>()
-            .HasMany(e => e.PontosColetas)
-            .WithOne(e => e.RecebimentoLixo)
-            .HasForeignKey(e => e.RecebimentoLixoId)
+        modelBuilder.Entity<PontosColeta>()
+            .HasMany(e => e.RecebimentoLixos)
+            .WithOne(e => e.PontosColeta)
+            .HasForeignKey(e => e.PontosColetaId)
             .IsRequired(false);
 
         modelBuilder.Entity<RecebimentoLixo>()

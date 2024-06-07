@@ -22,11 +22,9 @@ public class PontosColeta
     [Required(ErrorMessage = "O nome do gerente do ponto é obrigatório.")]
     [Column("gerente_ponto")]
     public string GerentePonto { get; set; } = null!;
+
+    public ICollection<RecebimentoLixo> RecebimentoLixos { get; } = new List<RecebimentoLixo>();
     
-    [Column("id_recebimento")]
-    public long? RecebimentoLixoId { get; set; }
-    
-    public RecebimentoLixo? RecebimentoLixo { get; set; }
     
     
     

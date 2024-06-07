@@ -20,10 +20,7 @@ public class VoluntarioPerfil
     
     public VoluntarioPessoa VoluntarioPessoa { get; set; } = null!;
     
-    [Column("id_recebimento")]
-    public long? RecebimentoLixoId { get; set; }
-    
-    public RecebimentoLixo? RecebimentoLixo { get; set; }
+    public ICollection<RecebimentoLixo> RecebimentoLixos { get; } = new List<RecebimentoLixo>();
     
     
 }

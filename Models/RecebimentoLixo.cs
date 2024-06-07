@@ -14,11 +14,21 @@ public class RecebimentoLixo
     [Column("dt_recebimento")]
     public DateTime DtRecebimento { get; set; }
 
-    public ICollection<VoluntarioPerfil> Perfils { get; } = new List<VoluntarioPerfil>();
-
-    public ICollection<PontosColeta> PontosColetas { get; } = new List<PontosColeta>();
+    [Column("id_pontosColeta")]
+    public long? PontosColetaId { get; set; }
+    
+    public PontosColeta? PontosColeta { get; set; }
+    
+    [Column("id_perfil")]
+    public long? PerfilId { get; set; }
+    
+    public VoluntarioPerfil? VoluntarioPerfil { get; set; }
+    
+    [Column("id_pessoa")]
+    public long? PessoaId { get; set; }
+    
+    public VoluntarioPessoa? VoluntarioPessoa { get; set; }
 
     public ICollection<TiposLixo> TiposLixos { get; } = new List<TiposLixo>();
-
-    public ICollection<VoluntarioPessoa> VoluntarioPessoas { get; } = new List<VoluntarioPessoa>();
+    
 }
