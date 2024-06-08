@@ -20,7 +20,8 @@ https://youtu.be/P1d18IPrAPM
 
 ## Imagem dos diagramas:
 ### Modelo Entidade-Relacionamento
-![image](https://github.com/LuizFFarias/gs-bluehorizon-dotnet/assets/126570094/cee44c1c-777d-4797-9ecb-7a4a7b3b5f72)
+![image](https://github.com/LuizFFarias/gs-bluehorizon-dotnet/assets/126570094/3cf94cb1-1d77-4109-8983-26def13cb247)
+
 
 ### Diagrama de Classes
 ![image](https://github.com/LuizFFarias/gs-bluehorizon-dotnet/assets/126570094/34c4243e-9fa1-4418-9528-195935710de7)
